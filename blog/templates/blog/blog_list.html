@@ -9,7 +9,7 @@
 
 {# 页面内容 #}
 {% block content %}
-    <div class="container">
+     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
                 <div class="panel panel-default">
@@ -21,13 +21,13 @@
                                 <p class="blog-info">
                                     <span class="glyphicon glyphicon-tag"></span> <a href="{% url 'blogs_with_type' blog.blog_type.pk %}">{{ blog.blog_type }}</a>&nbsp;&nbsp;
                                     <span class="glyphicon glyphicon-time"></span> {{ blog.created_time|date:"Y-m-d" }}&nbsp;&nbsp;
-                                    阅读({{ blog.read_num }})
+                                    阅读({{ blog.get_read_num }})
                                 </p>
-                                <p>{{ blog.content|striptags|truncatechars:30 }}</p>
+                                <p>{{ blog.content|striptags|truncatechars:120 }}</p>
                             </div>
                         {% empty %}
                             <div class="blog">
-                                <h3>-- 暂无博客，敬请期待 --</h3>
+                                <h3>暂无博客，敬请期待</h3>
                             </div>
                         {% endfor %}
                     </div>
@@ -93,7 +93,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">日期归档</div>
                     <div class="panel-body">
-                        <ul class="blog-types">
+                        <ul>
                             {% for blog_date, blog_count in blog_dates.items %}
                                 <li>
                                     <a href="{% url 'blogs_with_date' blog_date.year blog_date.month %}">
