@@ -5,7 +5,6 @@ from django.db.models import ObjectDoesNotExist
 from .models import LikeCount, LikeRecord
 
 # Create your views here.
-
 def ErrorResponse(code, message):
     data = {}
     data['status'] = 'ERROR'
