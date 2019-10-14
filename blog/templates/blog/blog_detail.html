@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
-
-{# 页面标题 #}
-{% block title %}
-    {{ blog.title }}
-{% endblock %}
-
+{% block title %}{{ blog.title }}{% endblock %}
 {% block nav_blog_active %}active{% endblock %}
 
 {% load staticfiles %}
